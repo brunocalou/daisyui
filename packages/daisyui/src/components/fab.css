@@ -107,94 +107,96 @@
     }
     &:has(> :nth-child(3)) {
       --position: 140%;
-      > :nth-child(3) {
-        --degree: 135deg;
-      }
+    }
+    > :nth-child(3):nth-last-child(n + 1) {
+      --degree: 135deg;
     }
     &:has(> :nth-child(4)) {
       --position: 140%;
-      > :nth-child(3) {
-        --degree: 165deg;
-      }
-      > :nth-child(4) {
-        --degree: 105deg;
-      }
+    }
+    > :nth-child(3):nth-last-child(n + 2) {
+      --degree: 165deg;
+    }
+    > :nth-child(4):nth-last-child(n + 1) {
+      --degree: 105deg;
     }
     &:has(> :nth-child(5)) {
       --position: 180%;
-      > :nth-child(3) {
-        --degree: 180deg;
-      }
-      > :nth-child(4) {
-        --degree: 135deg;
-      }
-      > :nth-child(5) {
-        --degree: 90deg;
-      }
+    }
+    > :nth-child(3):nth-last-child(n + 3) {
+      --degree: 180deg;
+    }
+    > :nth-child(4):nth-last-child(n + 2) {
+      --degree: 135deg;
+    }
+    > :nth-child(5):nth-last-child(n + 1) {
+      --degree: 90deg;
     }
     &:has(> :nth-child(6)) {
       --position: 220%;
-      > :nth-child(3) {
-        --degree: 180deg;
-      }
-      > :nth-child(4) {
-        --degree: 150deg;
-      }
-      > :nth-child(5) {
-        --degree: 120deg;
-      }
-      > :nth-child(6) {
-        --degree: 90deg;
-      }
+    }
+    > :nth-child(3):nth-last-child(n + 4) {
+      --degree: 180deg;
+    }
+    > :nth-child(4):nth-last-child(n + 3) {
+      --degree: 150deg;
+    }
+    > :nth-child(5):nth-last-child(n + 2) {
+      --degree: 120deg;
+    }
+    > :nth-child(6):nth-last-child(n + 1) {
+      --degree: 90deg;
     }
     /* No main-action/close: the first action (2nd child) fans out too, so the arc
        starts at the 2nd child — same degrees as above, shifted by one child. */
     &:not(:has(.fab-main-action, .fab-close)) {
-      > :nth-child(n + 6) {
-        @apply hidden;
-      }
       &:has(> :nth-child(2)) {
         --position: 140%;
-        > :nth-child(2) {
-          --degree: 135deg;
-        }
       }
       &:has(> :nth-child(3)) {
         --position: 140%;
-        > :nth-child(2) {
-          --degree: 165deg;
-        }
-        > :nth-child(3) {
-          --degree: 105deg;
-        }
       }
       &:has(> :nth-child(4)) {
         --position: 180%;
-        > :nth-child(2) {
-          --degree: 180deg;
-        }
-        > :nth-child(3) {
-          --degree: 135deg;
-        }
-        > :nth-child(4) {
-          --degree: 90deg;
-        }
       }
       &:has(> :nth-child(5)) {
         --position: 220%;
-        > :nth-child(2) {
-          --degree: 180deg;
-        }
-        > :nth-child(3) {
-          --degree: 150deg;
-        }
-        > :nth-child(4) {
-          --degree: 120deg;
-        }
-        > :nth-child(5) {
-          --degree: 90deg;
-        }
       }
+    }
+    /* The same condition seen from each child (no main-action/close before it), so the browser
+       doesn't have to recalculate the whole page when any element is added or removed */
+    > :nth-child(n + 6):not(.fab-main-action ~ *, .fab-close ~ *) {
+      @apply hidden;
+    }
+    > :nth-child(2):nth-last-child(n + 1):not(.fab-main-action ~ *, .fab-close ~ *) {
+      --degree: 135deg;
+    }
+    > :nth-child(2):nth-last-child(n + 2):not(.fab-main-action ~ *, .fab-close ~ *) {
+      --degree: 165deg;
+    }
+    > :nth-child(3):nth-last-child(n + 1):not(.fab-main-action ~ *, .fab-close ~ *) {
+      --degree: 105deg;
+    }
+    > :nth-child(2):nth-last-child(n + 3):not(.fab-main-action ~ *, .fab-close ~ *) {
+      --degree: 180deg;
+    }
+    > :nth-child(3):nth-last-child(n + 2):not(.fab-main-action ~ *, .fab-close ~ *) {
+      --degree: 135deg;
+    }
+    > :nth-child(4):nth-last-child(n + 1):not(.fab-main-action ~ *, .fab-close ~ *) {
+      --degree: 90deg;
+    }
+    > :nth-child(2):nth-last-child(n + 4):not(.fab-main-action ~ *, .fab-close ~ *) {
+      --degree: 180deg;
+    }
+    > :nth-child(3):nth-last-child(n + 3):not(.fab-main-action ~ *, .fab-close ~ *) {
+      --degree: 150deg;
+    }
+    > :nth-child(4):nth-last-child(n + 2):not(.fab-main-action ~ *, .fab-close ~ *) {
+      --degree: 120deg;
+    }
+    > :nth-child(5):nth-last-child(n + 1):not(.fab-main-action ~ *, .fab-close ~ *) {
+      --degree: 90deg;
     }
   }
 }

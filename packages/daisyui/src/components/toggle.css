@@ -47,15 +47,13 @@
         rotate: -15deg;
       }
     }
-    &:has(:checked) {
-      > :nth-child(2) {
-        @apply opacity-0;
-        rotate: 15deg;
-      }
-      > :nth-child(3) {
-        @apply opacity-100;
-        rotate: 0deg;
-      }
+    > :checked ~ :nth-child(2) {
+      @apply opacity-0;
+      rotate: 15deg;
+    }
+    > :checked ~ :nth-child(3) {
+      @apply opacity-100;
+      rotate: 0deg;
     }
     &:before {
       @apply rounded-selector relative start-0 col-start-2 row-start-1 aspect-square h-full w-full bg-current;

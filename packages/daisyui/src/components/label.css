@@ -46,8 +46,9 @@
           opacity 0.1s ease-out;
       }
     }
-    &:focus-within,
-    &:not(:has(input:placeholder-shown, textarea:placeholder-shown)) {
+    /* Without focus the label only floats when no placeholder is shown, and a placeholder that
+       isn't shown needs no style: only the focused state styles it */
+    &:focus-within {
       ::placeholder {
         @apply opacity-0;
         top: 0;
@@ -58,6 +59,9 @@
       :dir(rtl)::placeholder {
         translate: 12.5% calc(-50% - 0.125em);
       }
+    }
+    &:focus-within,
+    &:not(:has(input:placeholder-shown, textarea:placeholder-shown)) {
       > span {
         @apply opacity-100;
         top: 0;

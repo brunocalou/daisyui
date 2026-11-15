@@ -91,12 +91,15 @@
         @apply text-base-content/40;
       }
       box-shadow: none;
+    }
 
-      &::placeholder,
-      ::placeholder {
-        /* color and opacity to work with safari */
-        @apply text-base-content opacity-20;
-      }
+    > select[disabled]::placeholder,
+    &:is(:disabled, [disabled])::placeholder,
+    &:is(:disabled, [disabled]) ::placeholder,
+    fieldset:disabled &::placeholder,
+    fieldset:disabled & ::placeholder {
+      /* color and opacity to work with safari */
+      @apply text-base-content opacity-20;
     }
 
     &:has(> select[disabled]) > select[disabled] {

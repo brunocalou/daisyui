@@ -52,12 +52,13 @@
     &:is(:disabled, [disabled]) {
       @apply border-base-200 bg-base-200 text-base-content/40 cursor-not-allowed;
       box-shadow: none;
+    }
 
-      &::placeholder,
-      ::placeholder {
-        /* color and opacity to work with safari */
-        @apply text-base-content opacity-20;
-      }
+    > textarea[disabled]::placeholder,
+    &:is(:disabled, [disabled])::placeholder,
+    &:is(:disabled, [disabled]) ::placeholder {
+      /* color and opacity to work with safari */
+      @apply text-base-content opacity-20;
     }
 
     &:has(> textarea[disabled]) > textarea[disabled] {
